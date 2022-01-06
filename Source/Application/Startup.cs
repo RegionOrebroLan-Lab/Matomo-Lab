@@ -1,5 +1,6 @@
 using System;
 using System.Net;
+using Application.Models.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -42,6 +43,8 @@ namespace Application
 
 		public virtual void ConfigureServices(IServiceCollection services)
 		{
+			services.Configure<AnalyticsOptions>(this.Configuration.GetSection("Analytics"));
+
 			// https://docs.microsoft.com/en-us/azure/app-service/configure-language-dotnetcore#detect-https-session
 			services.Configure<ForwardedHeadersOptions>(options =>
 			{

@@ -1,4 +1,6 @@
 ﻿@{ ViewBag.Site = "Application"; }
+@inject IOptionsMonitor<AnalyticsOptions> _analyticsOptionsMonitor
+@{ var analyticsOptions = _analyticsOptionsMonitor.CurrentValue; }
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -44,6 +46,14 @@
 		<footer class="border-top container pt-1 text-center text-muted">
 			&copy; 2021 - @ViewBag.Site
 		</footer>
-		<script asp-append-version="true" src="~/Scripts/Site.min.js"></script>
+		<script
+			asp-append-version="true"
+			data-analytics-authority="@analyticsOptions.Authority"
+			data-analytics-enabled="@analyticsOptions.Enabled"
+			data-analytics-id="@analyticsOptions.Id"
+			data-analytics-tag-manager-enabled="@analyticsOptions.TagManagerEnabled"
+			data-analytics-tag-manager-id="@analyticsOptions.TagManagerId"
+			id="site-script"
+			src="~/Scripts/Site.min.js"></script>
 	</body>
 </html>
