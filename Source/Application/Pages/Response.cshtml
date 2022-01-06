@@ -1,0 +1,21 @@
+﻿@page
+@model ResponseModel
+@{ ViewBag.Name = "Response"; }
+<h2 class="h4">Response-headers</h2>
+@if(!Response.Headers.Any())
+{
+	<div class="alert alert-warning mt-3">
+		No response-headers.
+	</div>
+}
+else
+{
+	<ul>
+		@foreach(var header in Response.Headers.OrderBy(header => header.Key))
+		{
+			<li>
+				<strong>@header.Key: </strong>@header.Value
+			</li>
+		}
+	</ul>
+}

@@ -1,0 +1,59 @@
+﻿@model Tuple<IFileProvider, string>
+@if(Model.Item1 != null)
+{
+	var directoryPathsToSkip = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+	{
+		"/bin",
+		"/node_modules",
+		"/obj"
+	};
+
+	var path = Model.Item2 ?? string.Empty;
+	var children = Model.Item1.GetDirectoryContents(path).OrderBy(child => child.Name).ToArray();
+	var directories = children.Where(child => child.IsDirectory).ToArray();
+	var files = children.Where(child => !child.IsDirectory).ToArray();
+	const int numberOfFilesLimit = 50;
+
+	@if(children.Any())
+	{
+		<ul @Html.Raw(!string.IsNullOrEmpty(path) ? $"class=\"collapse\" id=\"directory{path.Replace("/", "-")}\"" : null)>
+			@foreach(var directory in directories)
+			{
+				var childPath = $"{path}/{directory.Name}";
+				<li>
+					@if(directoryPathsToSkip.Contains(childPath))
+					{
+						@directory.Name
+						<small>(skipping content)</small>
+					}
+					else
+					{
+						@if(Model.Item1.GetDirectoryContents(childPath).Any())
+						{
+							var id = $"directory{childPath.Replace("/", "-")}";
+							<a aria-controls="@id" aria-expanded="false" data-bs-toggle="collapse" href="#@id" role="button">
+								@directory.Name
+							</a>
+						}
+						else
+						{
+							@directory.Name
+						}
+						<partial model="@Tuple.Create(Model.Item1, childPath)" name="_FileTree" />
+					}
+				</li>
+			}
+			@if(files.Length > numberOfFilesLimit)
+			{
+				<li>The directory contains more than @numberOfFilesLimit files...</li>
+			}
+			else
+			{
+				@foreach(var file in files)
+				{
+					<li>@file.Name</li>
+				}
+			}
+		</ul>
+	}
+}

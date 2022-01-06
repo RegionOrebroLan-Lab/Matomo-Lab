@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<AnalysisMode>AllEnabledByDefault</AnalysisMode>
+		<CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+		<NoWarn>CA1014;CS8032;CS8033;IDE0130</NoWarn>
+		<TargetFramework>net5.0</TargetFramework>
+		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+		<UserSecretsId>a91eb4b4-f028-47fd-b0ad-fb4b20ec2323</UserSecretsId>
+	</PropertyGroup>
+	<ItemGroup>
+		<None_ Include="wwwroot\**\.gitkeep;package.json;package-lock.json;tsconfig.json" />
+		<Content Remove="@(None_)" />
+		<None Include="@(None_)" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.12" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
+	</ItemGroup>
+</Project>

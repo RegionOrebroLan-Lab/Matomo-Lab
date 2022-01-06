@@ -1,0 +1,47 @@
+﻿@page
+@model ConfigurationModel
+@{ ViewBag.Name = "Configuration"; }
+<h2 class="h4">Configuration-providers</h2>
+<p>Select the configuration-providers you want to show the configuration for.</p>
+<form method="get">
+	@foreach(var configurationProvider in Model.ConfigurationProviders)
+	{
+		<div class="form-check">
+			<input class="form-check-input" id="configuration-provider-@configurationProvider.Item1" name="@Model.ConfigurationProvidersName" @Html.Raw(configurationProvider.Item3 ? " checked=\"checked\"" : null) type="checkbox" value="@configurationProvider.Item1">
+			<label class="form-check-label" for="configuration-provider-@configurationProvider.Item1">
+				@configurationProvider.Item2
+			</label>
+		</div>
+	}
+	<button class="btn btn-primary mt-3" type="submit">Show</button>
+</form>
+@if(!Model.ConfigurationDetails.Any())
+{
+	<div class="alert alert-warning mt-3">
+		No configuration-provider selected.
+	</div>
+}
+else
+{
+	foreach(var (configurationProvider, data) in Model.ConfigurationDetails)
+	{
+		<h2 class="h4 mt-3">@configurationProvider</h2>
+		if(!data.Any())
+		{
+			<div class="alert alert-warning mt-3">
+				No items.
+			</div>
+		}
+		else
+		{
+			<ul>
+				@foreach(var item in data.OrderBy(item => item.Key))
+				{
+					<li>
+						<strong>@item.Key: </strong>@item.Value
+					</li>
+				}
+			</ul>
+		}
+	}
+}

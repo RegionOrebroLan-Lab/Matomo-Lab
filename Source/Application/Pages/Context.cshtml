@@ -1,0 +1,40 @@
+﻿@page
+@model ContextModel
+@{ ViewBag.Name = "Context"; }
+<h2 class="h4">Connection</h2>
+<ul>
+	<li>
+		<strong>Certificate: </strong>@HttpContext.Connection.ClientCertificate
+	</li>
+	<li>
+		<strong>Id: </strong>@HttpContext.Connection.Id
+	</li>
+	<li>
+		<strong>LocalIpAddress: </strong>@HttpContext.Connection.LocalIpAddress
+	</li>
+	<li>
+		<strong>LocalPort: </strong>@HttpContext.Connection.LocalPort
+	</li>
+	<li>
+		<strong>RemoteIpAddress: </strong>@HttpContext.Connection.RemoteIpAddress
+	</li>
+	<li>
+		<strong>RemotePort: </strong>@HttpContext.Connection.RemotePort
+	</li>
+</ul>
+<h2 class="h4">Features</h2>
+@if(!HttpContext.Features.Any())
+{
+	<div class="alert alert-warning mt-3">
+		No features.
+	</div>
+}
+else
+{
+	<ul>
+		@foreach(var feature in HttpContext.Features.OrderBy(feature => feature.Key.FullName))
+		{
+			<li>@feature.Key</li>
+		}
+	</ul>
+}

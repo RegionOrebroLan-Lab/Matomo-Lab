@@ -1,0 +1,90 @@
+﻿@page
+@model EnvironmentModel
+@{ ViewBag.Name = "Environment"; }
+<ul>
+	<li>
+		<strong>ApplicationName: </strong>@Model.Environment.ApplicationName
+	</li>
+	<li>
+		<strong>ContentRootPath: </strong>@Model.Environment.ContentRootPath
+	</li>
+	<li>
+		<strong>EnvironmentName: </strong>@Model.Environment.EnvironmentName
+	</li>
+	<li>
+		<strong>WebRootPath: </strong>@Model.Environment.WebRootPath
+	</li>
+</ul>
+<h2 class="h4">
+	<a aria-controls="environment-property-list" aria-expanded="false" data-bs-toggle="collapse" href="#environment-property-list" role="button">System.Environment</a>
+</h2>
+<ul class="collapse" id="environment-property-list">
+	<li>
+		<strong>CommandLine: </strong>@Environment.CommandLine
+	</li>
+	<li>
+		<strong>CurrentDirectory: </strong>@Environment.CurrentDirectory
+	</li>
+	<li>
+		<strong>CurrentManagedThreadId: </strong>@Environment.CurrentManagedThreadId
+	</li>
+	<li>
+		<strong>ExitCode: </strong>@Environment.ExitCode
+	</li>
+	<li>
+		<strong>HasShutdownStarted: </strong>@Environment.HasShutdownStarted
+	</li>
+	<li>
+		<strong>Is64BitOperatingSystem: </strong>@Environment.Is64BitOperatingSystem
+	</li>
+	<li>
+		<strong>Is64BitProcess: </strong>@Environment.Is64BitProcess
+	</li>
+	<li>
+		<strong>MachineName: </strong>@Environment.MachineName
+	</li>
+	<li>
+		<strong>NewLine: </strong>@Environment.NewLine.Replace("\r", "\\r").Replace("\n", "\\n")
+	</li>
+	<li>
+		<strong>OSVersion: </strong>@Environment.OSVersion
+	</li>
+	<li>
+		<strong>ProcessId: </strong>@Environment.ProcessId
+	</li>
+	<li>
+		<strong>ProcessorCount: </strong>@Environment.ProcessorCount
+	</li>
+	<li>
+		<strong>StackTrace: </strong>@Environment.StackTrace
+	</li>
+	<li>
+		<strong>SystemDirectory: </strong>@Environment.SystemDirectory
+	</li>
+	<li>
+		<strong>SystemPageSize: </strong>@Environment.SystemPageSize
+	</li>
+	<li>
+		<strong>TickCount: </strong>@Environment.TickCount
+	</li>
+	<li>
+		<strong>TickCount64: </strong>@Environment.TickCount64
+	</li>
+	<li>
+		<strong>UserDomainName: </strong>@Environment.UserDomainName
+	</li>
+	<li>
+		<strong>UserInteractive: </strong>@Environment.UserInteractive
+	</li>
+	<li>
+		<strong>UserName: </strong>@Environment.UserName
+	</li>
+	<li>
+		<strong>Version: </strong>@Environment.Version
+	</li>
+	<li>
+		<strong>WorkingSet: </strong>@Environment.WorkingSet
+	</li>
+</ul>
+<h2 class="h4">Files</h2>
+<partial model="@Tuple.Create(Model.Environment.ContentRootFileProvider, string.Empty)" name="Shared/_FileTree" />

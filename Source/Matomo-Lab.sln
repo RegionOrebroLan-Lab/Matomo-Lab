@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Global", ".Global", "{92A7B06B-2C1E-4450-801B-607643A877CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{F3482302-4AD1-4FE7-8231-DE3E309D052C}"
+	ProjectSection(SolutionItems) = preProject
+		..\ReadMe.md = ..\ReadMe.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Settings", "Settings", "{DBB41613-59D6-4D80-9324-383112D40AB9}"
+	ProjectSection(SolutionItems) = preProject
+		..\.editorconfig = ..\.editorconfig
+		..\.gitignore = ..\.gitignore
+		..\NuGet.config = ..\NuGet.config
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{4176C4D2-8F99-43B2-88CB-8A5173B2A75A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4176C4D2-8F99-43B2-88CB-8A5173B2A75A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4176C4D2-8F99-43B2-88CB-8A5173B2A75A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4176C4D2-8F99-43B2-88CB-8A5173B2A75A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4176C4D2-8F99-43B2-88CB-8A5173B2A75A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F3482302-4AD1-4FE7-8231-DE3E309D052C} = {92A7B06B-2C1E-4450-801B-607643A877CB}
+		{DBB41613-59D6-4D80-9324-383112D40AB9} = {92A7B06B-2C1E-4450-801B-607643A877CB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {329B5F2D-3741-4DD4-8C7D-AD1D10EF66BA}
+	EndGlobalSection
+EndGlobal
